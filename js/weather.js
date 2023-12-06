@@ -1,5 +1,5 @@
 let citiesDropDown = document.querySelector("#citiesDropDown");
-let weatherTable  = document.querySelector("#weatherTable")
+let weatherDiv = document.querySelector("#weatherDiv")
 
 let cities = [
    {
@@ -40,12 +40,29 @@ let cities = [
 ];
 
 document.onload = init();
+citiesDropDown.onchange = () => getWeatherStation(citiesDropDown.value)
 
 function init() {
-    let i = 0;
     for (const city of cities) {
-        let option = new Option(city.name, i)
+        let option = new Option(city.name, city.latitude + "," + city.longitude)
         citiesDropDown.appendChild(option)
-        ++i
     }
+}
+
+async function getWeatherStation(coordinates) {
+    let responce = await fetch(`https://api.weather.gov/points/${coordinates}`);
+    let data = await responce.json();
+    let properties = data.properties
+    getForcast(properties.gridId, properties.gridX, properties.gridY);
+}
+
+async function getForcast(office, gridX, gridY) {
+    let responce = await fetch(`https://api.weather.gov/gridpoints/${office}/${gridX},${gridY}/forecast`);
+    let data = await responce.json();
+    let weeklyForcast = data.properties.periods
+    console.log(weeklyForcast);
+}
+
+function createCard() {
+    
 }
