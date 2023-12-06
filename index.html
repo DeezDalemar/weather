@@ -1,18 +1,28 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Dales Weather</title>
-</head>
-<body>
-    <header>
-        <h1>Dale's Weather Forcast</h1>
-    </header>
-    <main>
+   <head>
+      <meta charset="UTF-8" />
+      <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+      <title>Dales Weather</title>
+   </head>
+   <body>
+      <header>
+         <h1>Dale's Weather Forcast</h1>
+      </header>
 
-    </main>
+      <main>
+         <form>
+            <label for="citiesDropDown">Select A City:</label>
+            <select name="cities" id="citiesDropDown">
+               <option>Select One</option>
+            </select>
+         </form>
 
-    <script src="js/weather.js"></script>
-</body>
+         <table id="weatherTable">
+
+         </table>
+      </main>
+
+      <script src="js/weather.js"></script>
+   </body>
 </html>

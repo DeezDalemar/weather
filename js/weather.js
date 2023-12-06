@@ -1,3 +1,6 @@
+let citiesDropDown = document.querySelector("#citiesDropDown");
+let weatherTable  = document.querySelector("#weatherTable")
+
 let cities = [
    {
       name: "Pittsburgh, PA",
@@ -35,3 +38,14 @@ let cities = [
       longitude: -76.6122,
    },
 ];
+
+document.onload = init();
+
+function init() {
+    let i = 0;
+    for (const city of cities) {
+        let option = new Option(city.name, i)
+        citiesDropDown.appendChild(option)
+        ++i
+    }
+}
